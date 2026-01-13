@@ -14,7 +14,7 @@ public class RequestTypeRule implements IPriorityRule {
         return switch (request.getType()) {
             case INCIDENT -> 100;
             case REQUIREMENT -> 50;
-            case INQUIRY -> 25;
+            case INQUIRY -> 50;
         };
     }
 

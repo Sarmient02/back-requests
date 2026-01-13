@@ -19,12 +19,6 @@ public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    /**
-     * Create a new user.
-     *
-     * @param dto the user data
-     * @return the created user
-     */
     public UserDTO create(CreateUserDTO dto) {
         User user = User.builder()
                 .username(dto.getUsername())
@@ -38,11 +32,6 @@ public class UserServiceImpl implements IUserService {
         return UserDTO.fromEntity(saved);
     }
 
-    /**
-     * Get all users.
-     *
-     * @return list of all users
-     */
     @Transactional(readOnly = true)
     public List<UserDTO> findAll() {
         return userRepository.findAll().stream()
@@ -50,12 +39,6 @@ public class UserServiceImpl implements IUserService {
                 .toList();
     }
 
-    /**
-     * Get a user by ID.
-     *
-     * @param id the user ID
-     * @return the user
-     */
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
         User user = userRepository.findById(id)
